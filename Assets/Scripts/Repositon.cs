@@ -9,27 +9,40 @@ public class Repositon : MonoBehaviour
         if (!collision.CompareTag("Area"))
             return;
 
-        Vector3 playerPos = GameManager.instance.transform.position;
-        Vector3 mypos = transform.position;
-        float diffx = Mathf.Abs(playerPos.x - mypos.x);
-        float diffy = Mathf.Abs(playerPos.y - mypos.y);
+        Vector3 playerPos = GameManager.instance.player.transform.position;
+        Vector3 myPos = transform.position;
+        float diffX = Mathf.Abs(playerPos.x - myPos.x);
+        float diffY = Mathf.Abs(playerPos.y - myPos.y);
 
         Vector3 playerDir = GameManager.instance.player.inputVec;
-        float dirx = playerDir.x < 0 ? -1 : 1;
-        float diry = playerDir.y < 0 ? -1 : 1;
+        float dirX = playerDir.x < 0 ? -1 : 1;
+        float dirY = playerDir.y < 0 ? -1 : 1;
 
         switch (transform.tag)
         {
             case "Ground" :
-                if (diffx > diffy)
+                if (diffX > diffY)
                 {
-                    transform.Translate(Vector3.right * dirx * 40);
+                    transform.Translate(Vector3.right * dirX * 40);
                 }
-                else if (diffx < diffy)
+                else if (diffX < diffY)
                 { 
-                    transform.Translate(Vector3.up * diry * 40);
+                    transform.Translate(Vector3.up * dirY * 40);
                 }
-                    break;
+                // 타일맵 하나의 크기는 20 -> 두 칸 건너뛰어야 하니 40
+               // if (diffX > diffY)
+               // {
+               //     transform.Translate(dirX * 40, 0, 0);
+               // }
+               // else if (diffX < diffY)
+               // {
+               //     transform.Translate(0, dirY * 40, 0);
+               // }
+              //else
+              //{
+              //    transform.Translate(dirX * 40, dirY * 40, 0);
+              //}
+                break;
 
             case "Enemy":
 
