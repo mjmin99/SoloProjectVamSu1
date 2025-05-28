@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
     public float maxGameTime = 2 * 10f;
 
     [Header("# Player Info")]
+    public int playerId;
     public float health;
     public float maxHealth;
     public int level;
@@ -30,12 +31,13 @@ public class GameManager : MonoBehaviour
         instance = this; // 정적변수는 인스펙터창에서 변수 드래그앤드롭이 불가해서 여기서 이렇게 선언해야함
     }
 
-    public void GameStart()
+    public void GameStart(int id)
     { 
+        playerId = id;
         health = maxHealth;
 
-        //임시로 작성
-        uiLevelUp.Select(0);
+        player.gameObject.SetActive(true);
+        uiLevelUp.Select(playerId % 2);
         Resume();
     }
 

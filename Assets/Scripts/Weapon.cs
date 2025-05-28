@@ -49,9 +49,9 @@ public class Weapon : MonoBehaviour
     }
 
     public void LevelUp(float damage, int count)
-    { 
-        this.damage = damage;
-        this.count += count;
+    {
+        this.damage = damage * Character.Damage;
+        this.count += count + Character.Count;
 
         if (id == 0)
             Batch();
@@ -68,27 +68,27 @@ public class Weapon : MonoBehaviour
 
         //Property Set
         id = data.itemId;
-        damage = data.baseDamage;
-        count = data.baseCount;
+        damage = data.baseDamage * Character.Damage;
+        count = data.baseCount + Character.Count;
 
         for (int i = 0; i < GameManager.instance.pool.prefabs.Length; i++)
         {
             if (data.projectile == GameManager.instance.pool.prefabs[i])
-            { 
+            {
                 prefabId = i;
                 break;
             }
-            
+
         }
         switch (id)
         {
             case 0:
-                speed = 150; //회전속도
+                speed = 150 * Character.WeaponSpeed; //회전속도
                 Batch();
                 break;
-            
+
             default:
-                speed = 0.3f; //연사속도
+                speed = 0.5f * Character.WeaponRate; //연사속도
                 break;
         }
 
@@ -112,7 +112,7 @@ public class Weapon : MonoBehaviour
                 bullet = transform.GetChild(index);
             }
             else
-            { 
+            {
                 bullet = GameManager.instance.pool.Get(prefabId).transform;
                 bullet.parent = transform;
             }
