@@ -1,7 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem; // ¿Œ
 
 public class Player : MonoBehaviour
 {
@@ -25,7 +22,7 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
-        if(!GameManager.instance.isLive)
+        if (!GameManager.instance.isLive)
         {
             return;
         }
@@ -54,6 +51,23 @@ public class Player : MonoBehaviour
         if (inputVec.x != 0)
         {
             spriter.flipX = inputVec.x < 0;
+        }
+    }
+
+    private void OnCollisionStay2D(Collision2D collision)
+    {
+        if (!GameManager.instance.isLive)
+            return;
+
+        GameManager.instance.health -= Time.deltaTime * 10;
+
+        if (GameManager.instance.health <= 0){
+            for (int i = 2; i < transform.childCount; i++){
+                transform.GetChild(i).gameObject.SetActive(false);
+            }
+
+            anim.SetTrigger("Dead");
+            GameManager.instance.GameOver();
         }
     }
 }
