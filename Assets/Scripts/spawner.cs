@@ -18,6 +18,9 @@ public class spawner : MonoBehaviour
 
     private void Update()
     {
+        if (!GameManager.instance.isLive)
+            return;
+
         timer += Time.deltaTime;
         level = Mathf.Min(Mathf.FloorToInt(GameManager.instance.gametime / 10f), spawnData .Length - 1); // 플로어 투 인트 -> 소수점 아래를 버리고 int 형으로 바꿔줌 / 반대는 셀투 인트 (올림)
     

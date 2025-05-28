@@ -22,6 +22,9 @@ public class Weapon : MonoBehaviour
 
     private void Update()
     {
+        if (!GameManager.instance.isLive)
+            return;
+
         switch (id)
         {
             case 0:
@@ -52,7 +55,7 @@ public class Weapon : MonoBehaviour
 
         if (id == 0)
             Batch();
-        player.BroadcastMessage("ApplyGear");
+        player.BroadcastMessage("ApplyGear", SendMessageOptions.DontRequireReceiver);
     }
 
     public void Init(ItemData data)
