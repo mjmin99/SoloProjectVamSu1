@@ -35,6 +35,8 @@ public class AudioManager : MonoBehaviour
         bgmPlayer = bgmObject.AddComponent<AudioSource>();
         bgmPlayer.playOnAwake = false;
         bgmPlayer.clip = bgmClip;
+        bgmPlayer.loop = true;
+        bgmPlayer.volume = bgmVolume;
         bgmEffect = Camera.main.GetComponent<AudioHighPassFilter>();
 
         //효과음 플레이어 초기화
