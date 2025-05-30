@@ -2,12 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using static UnityEditor.Progress;
 
 public class PlayerItemCollector : MonoBehaviour
 {
     [SerializeField] 
     private Text actionText;
     private ItemPickUp currentItem;
+    private Inventory theInventory;
 
     private void Start()
     {
@@ -52,6 +54,7 @@ public class PlayerItemCollector : MonoBehaviour
             }
         }
     }
+
 
     private void ShowActionText(string itemName)
     {
