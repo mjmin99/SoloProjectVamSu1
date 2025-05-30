@@ -9,6 +9,7 @@ public class Enemy : MonoBehaviour
     public float maxHealth;
     public RuntimeAnimatorController[] animCon;
     public Rigidbody2D target;
+    public GameObject[] dropItemPrefabs;
 
     private bool isLive;
     Rigidbody2D rigid;
@@ -107,8 +108,18 @@ public class Enemy : MonoBehaviour
     }
 
     void Dead()
-    { 
+    {
+        DropRandomItem();
         gameObject.SetActive(false);
+    }
+
+    private void DropRandomItem()
+    {
+        if (dropItemPrefabs.Length == 0)
+            return;
+
+        int randomIndex = Random.Range(0, dropItemPrefabs.Length);
+        Instantiate(dropItemPrefabs[randomIndex], transform.position, Quaternion.identity);
     }
 
 }

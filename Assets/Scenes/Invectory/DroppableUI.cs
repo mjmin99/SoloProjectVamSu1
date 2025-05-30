@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -9,7 +7,7 @@ public class DroppableUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     Image image;
     RectTransform rect;
 
- 
+
 
     private void Awake()
     {
@@ -19,18 +17,18 @@ public class DroppableUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-       image.color = Color.yellow;
+        image.color = Color.yellow;
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        image.color = Color.white;   
+        image.color = Color.white;
     }
 
     public void OnDrop(PointerEventData eventData)
     {
         if (eventData.pointerDrag != null)
-        { 
+        {
             eventData.pointerDrag.transform.SetParent(transform);
             eventData.pointerDrag.GetComponent<RectTransform>().position = rect.position;
         }
