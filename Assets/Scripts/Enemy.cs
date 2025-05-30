@@ -10,6 +10,7 @@ public class Enemy : MonoBehaviour
     public RuntimeAnimatorController[] animCon;
     public Rigidbody2D target;
     public GameObject[] dropItemPrefabs;
+    public float dropChance = 0.01f;
 
     private bool isLive;
     Rigidbody2D rigid;
@@ -116,6 +117,9 @@ public class Enemy : MonoBehaviour
     private void DropRandomItem()
     {
         if (dropItemPrefabs.Length == 0)
+            return;
+
+        if (Random.value > dropChance) // 0.0 ~ 1.0 사이 난수, 확률 실패 시 리턴
             return;
 
         int randomIndex = Random.Range(0, dropItemPrefabs.Length);

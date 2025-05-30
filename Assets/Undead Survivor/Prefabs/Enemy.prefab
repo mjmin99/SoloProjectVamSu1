@@ -277,6 +277,8 @@ MonoBehaviour:
   - {fileID: 22100000, guid: 12cfc8b2360c2fc4499d4f6f6607671a, type: 2}
   - {fileID: 22100000, guid: 8d1d920724ffb8a409ce0e458dc4b7a9, type: 2}
   target: {fileID: 0}
+  dropItemPrefabs:
+  - {fileID: 4687952860302685543, guid: 56f1b24988a3b6949980a5745d037107, type: 3}
 --- !u!114 &2628812881224419864
 MonoBehaviour:
   m_ObjectHideFlags: 0
