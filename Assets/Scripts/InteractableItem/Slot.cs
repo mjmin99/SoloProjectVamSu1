@@ -42,6 +42,17 @@ public class Slot : MonoBehaviour , IPointerClickHandler, IBeginDragHandler, IDr
 
     }
 
+    public void PointerEnter(int slotNum) //테스트용
+    {
+        Debug.Log(slotNum + "슬롯 들어옴");
+    }
+
+    public void PointerExit(int slotNum) //테스트용
+    {
+        Debug.Log(slotNum + "슬롯 나감");
+    }
+
+
     public void OnPointerClick(PointerEventData eventData)
     {
         if (eventData.button == PointerEventData.InputButton.Right)
